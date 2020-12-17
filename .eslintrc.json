@@ -38,6 +38,7 @@
     "no-use-before-define": "off",
     "camelcase": "off",
     "import/no-duplicates": "off",
+    "no-unused-expressions": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
