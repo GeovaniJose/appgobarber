@@ -37,6 +37,7 @@
     "prettier/prettier": "error",
     "no-use-before-define": "off",
     "camelcase": "off",
+    "import/no-duplicates": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
