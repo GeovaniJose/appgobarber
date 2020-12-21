@@ -24,7 +24,9 @@ import Button from '../../components/Button';
 
 import {
   Container,
+  HeaderButtons,
   BackButton,
+  LogoutButton,
   Title,
   UserAvatarButton,
   UserAvatar,
@@ -39,7 +41,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
@@ -152,6 +154,10 @@ const Profile: React.FC = () => {
     navigation.goBack();
   }, [navigation]);
 
+  const handleLogout = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
   return (
     <>
       <KeyboardAvoidingView
@@ -164,9 +170,15 @@ const Profile: React.FC = () => {
           contentContainerStyle={{ flexGrow: 1 }}
         >
           <Container>
-            <BackButton onPress={handleGoBack}>
-              <Icon name="chevron-left" size={25} color="#999591" />
-            </BackButton>
+            <HeaderButtons>
+              <BackButton onPress={handleGoBack}>
+                <Icon name="chevron-left" size={25} color="#999591" />
+              </BackButton>
+
+              <LogoutButton onPress={handleLogout}>
+                <Icon name="power" size={25} color="#999591" />
+              </LogoutButton>
+            </HeaderButtons>
 
             <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />

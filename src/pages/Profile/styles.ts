@@ -1,5 +1,6 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 import { Platform } from 'react-native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
   /* flex: 1; */
@@ -7,9 +8,21 @@ export const Container = styled.View`
   padding: 0 30px ${Platform.OS === 'android' ? 150 : 40}px;
 `;
 
-export const BackButton = styled.TouchableOpacity`
-  margin-top: 40px;
+export const HeaderButtons = styled.View`
+  padding-top: 24px;
+  ${Platform.OS === 'ios' &&
+  css`
+    padding-top: ${getStatusBarHeight() + 24}px;
+  `}
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 `;
+
+export const BackButton = styled.TouchableOpacity``;
+
+export const LogoutButton = styled.TouchableOpacity``;
 
 export const Title = styled.Text`
   font-size: 20px;
